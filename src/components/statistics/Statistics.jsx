@@ -1,28 +1,41 @@
-export const Statistics = ({ title, data }) => {
-  const renderStatistics = () =>
-    data.map(({ id, label, percentage }) => (
-      <li className="item" key={id}>
-        <span className="label">{label}</span>
-        <span className="percentage">{percentage}%</span>
-      </li>
-    ));
-  
-  return <div className="statistics">
-      <h2 className="title">{title}</h2>
-      <ul className="stat-list">
-       {data && renderStatistics()}
+import PropTypes from "prop-types";
+import style from './Statistics.module.css'
+
+export const Statistics = ({
+  title,
+  data
+}) => {
+  return (
+    <div className={style.statistics}>
+      {title && <h2 className={style.title}>{title}</h2>}
+      <ul className={style.statList}>
+        {data.map(({ label, percentage, id }) => (
+          <li
+            style={{ backgroundColor: getRandomHexColor() }}
+            className={style.statItem}
+            key={id}
+          >
+            <span>{label}</span>
+            <span>{percentage}%</span>
+          </li>
+        ))}
       </ul>
     </div>
+  );
 }
 
-// export const Statistics = ({ label, percentage }) => {
-//   return (
-//     <div className="statistics">
-//       <h2 className="title">Upload stats</h2>
 
-//       <ul className="stat-list">
-       
-//       </ul>
-//     </div>
-//   );
-// };
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
+Statistics.propTypes = {
+  title: PropTypes.string,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      label: PropTypes.string,
+      percentage: PropTypes.number,
+    })
+  ),
+}

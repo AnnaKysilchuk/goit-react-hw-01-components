@@ -1,31 +1,52 @@
-export const Profile = ({username, tag, location, avatar, stats}) => {
+import PropTypes from "prop-types";
+import style from './Profile.module.css';
+
+export const Profile = ({
+  username,
+  tag,
+  location,
+  avatar,
+  stats: { followers, views, likes }
+}) => {
   return (
-    <div className="profile">
-      <div className="description">
+    <div className={style.profile}>
+      <div className={style.description}>
         <img
           src={avatar}
           alt={username}
-          className="avatar"
+          className={style.avatar}
         />
-        <p className="name">{username}</p>
-        <p className="tag">{tag}</p>
-        <p className="location">{location}</p>
+        <p className={style.name}>{username}</p>
+        <p className={style.tag}>@{tag}</p>
+        <p className={style.location}>{location}</p>
       </div>
 
-      <ul className="stats">
-        <li>
-          <span className="label">Followers</span>
-          <span className="quantity">{stats.followers}</span>
+      <ul className={style.stats}>
+        <li className={style.statsItem}>
+          <span className={style.label}>Followers</span>
+          <span className={style.quantity}>{followers}</span>
         </li>
-        <li>
-          <span className="label">Views</span>
-          <span className="quantity">{stats.views}</span>
+        <li className={style.statsItem}>
+          <span className={style.label}>Views</span>
+          <span className={style.quantity}>{views}</span>
         </li>
-        <li>
-          <span className="label">Likes</span>
-          <span className="quantity">{stats.likes}</span>
+        <li className={style.statsItem}>
+          <span className={style.label}>Likes</span>
+          <span className={style.quantity}>{likes}</span>
         </li>
       </ul>
     </div>
   );
+};
+
+Profile.propTypes = {
+  username: PropTypes.string,
+  tag: PropTypes.string,
+  location: PropTypes.string,
+  avatar: PropTypes.string,
+  stats: PropTypes.shape({
+    followers: PropTypes.number,
+    views: PropTypes.number,
+    likes: PropTypes.number,
+  }),
 };

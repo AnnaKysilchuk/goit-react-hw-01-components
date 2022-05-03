@@ -1,0 +1,32 @@
+.transactionHistory {
+    padding: 0;
+    width: 300px;
+    border-collapse: collapse;
+}
+
+.tableHead {
+    font-weight: 700;
+    height: 40px;
+    background-color: #04b5d4;
+    color: #ffffff;
+}
+
+.tableBoby {
+    font-size: 12px;
+    text-align: center;
+    color: #757575;
+    height: 30px;
+}
+
+.tableBoby:nth-child(even) {
+    background-color: #e8e8e8;
+}
+
+.transactionType,
+.transactionAmpunt {
+    border-right: 1px solid #dedede;
+}
+
+.transactionType:first-letter {
+    text-transform: uppercase;
+}

@@ -1,0 +1,27 @@
+.statistics {
+    margin-bottom: 30px;
+    text-align: center;
+    width: 300px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 1.12;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: #757575;
+}
+
+.statList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.statItem {
+    width: 60px;
+    display: grid;
+    padding: 5px;
+}
